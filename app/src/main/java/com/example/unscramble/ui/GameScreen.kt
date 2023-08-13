@@ -58,6 +58,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import com.example.unscramble.data.MAX_NO_OF_WORDS
 
 
 @Composable
@@ -120,6 +121,10 @@ fun GameScreen(gameViewModel: GameViewModel = viewModel()) {
         }
 
         GameStatus(score = gameUiState.score, modifier = Modifier.padding(20.dp))
+
+        if(gameUiState.isGameCompleted) {
+            FinalScoreDialog(score = gameUiState.score, onPlayAgain = { gameViewModel.resetGame() })
+        }
 
     }
 }
