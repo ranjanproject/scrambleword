@@ -16,7 +16,7 @@
 
 package com.example.unscramble.data
 
-const val MAX_NO_OF_WORDS = 10
+const val MAX_NO_OF_WORDS = 1
 const val SCORE_INCREASE = 20
 
 // Set with all the words for the Game

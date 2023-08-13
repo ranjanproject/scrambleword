@@ -88,6 +88,12 @@ class GameViewModel: ViewModel(){
         updateUserGuess("")
     }
 
+    fun skipTheWord(){
+        _uiState.update {
+            it.copy(currentScrambledWord = pickRandomWordAndShuffle())
+        }
+    }
+
     private fun updateUserState(updatedScore: Int){
         _uiState.update { currentState ->
             currentState.copy( isGuessedWordWrong = false,
@@ -96,13 +102,5 @@ class GameViewModel: ViewModel(){
                 score = updatedScore)
         }
     }
-    fun submitWord(): Boolean{
-        if(userGuess == currentWord){
-//            pickNextWord()
-            questionCount.value.plus(1)
-            return true
-        }else{
-            return false
-        }
-    }
+
 }

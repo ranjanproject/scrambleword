@@ -20,7 +20,9 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.KeyboardActions
@@ -110,7 +112,7 @@ fun GameScreen(gameViewModel: GameViewModel = viewModel()) {
             }
 
             OutlinedButton(
-                onClick = {},
+                onClick = {gameViewModel.skipTheWord()},
                 modifier = Modifier.fillMaxWidth()
             ) {
                 Text(
@@ -123,7 +125,7 @@ fun GameScreen(gameViewModel: GameViewModel = viewModel()) {
         GameStatus(score = gameUiState.score, modifier = Modifier.padding(20.dp))
 
         if(gameUiState.isGameCompleted) {
-            FinalScoreDialog(score = gameUiState.score, onPlayAgain = { gameViewModel.resetGame() })
+            FinalScoreDialog(score = gameUiState.score, onPlayAgain = { gameViewModel.resetGame()})
         }
 
     }
@@ -229,7 +231,7 @@ private fun FinalScoreDialog(
             // onCloseRequest.
         },
         title = { Text(text = stringResource(R.string.congratulations)) },
-        text = { Text(text = stringResource(R.string.you_scored, score)) },
+        text = { Text(text = stringResource(R.string.you_scored, score))},
         modifier = modifier,
         dismissButton = {
             TextButton(
